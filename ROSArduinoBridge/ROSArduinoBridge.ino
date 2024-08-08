@@ -249,6 +249,9 @@ int runCommand() {
 void setup() {
   Serial.begin(BAUDRATE);
 
+  pinMode(13, OUTPUT);
+  digitalWrite(13, HIGH);
+
 // Initialize the motor controller if used */
 #ifdef USE_BASE
   #ifdef ARDUINO_ENC_COUNTER
