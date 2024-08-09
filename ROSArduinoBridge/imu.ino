@@ -19,7 +19,7 @@ void setup_imu()
 
     // Serial.println("");
 
-    calibrate_imu();
+    // calibrate_imu();
 }
 
 void calibrate_imu(){
