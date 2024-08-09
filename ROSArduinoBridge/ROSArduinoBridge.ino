@@ -103,6 +103,9 @@
   /* PID parameters and functions */
   #include "diff_controller.h"
 
+  /* IMU function definitions */
+  #include "imu.h"
+
   /* Run the PID loop at 30 times per second */
   #define PID_RATE           30     // Hz
 
@@ -206,6 +209,23 @@ int runCommand() {
     resetPID();
     Serial.println("OK");
     break;
+  case READ_IMU:
+    Serial.print(accel[0]-accel_offset[0]);
+    Serial.print(" ");
+    Serial.print(accel[1]-accel_offset[1]);
+    Serial.print(" ");
+    Serial.print(accel[2]-accel_offset[2]);
+    Serial.print(" ");
+    Serial.print(gyro[0]-gyro_offset[0]);
+    Serial.print(" ");
+    Serial.print(gyro[1]-gyro_offset[1]);
+    Serial.print(" ");
+    Serial.println(gyro[2]-gyro_offset[2]);
+    break;
+  case CALIBRATE_IMU:
+    calibrate_imu();
+    Serial.println("OK");
+    break;
   case MOTOR_SPEEDS:
     /* Reset the auto stop timer */
     lastMotorCommand = millis();
@@ -251,6 +271,8 @@ void setup() {
 
   pinMode(13, OUTPUT);
   digitalWrite(13, HIGH);
+  setup_imu();
+
 
 // Initialize the motor controller if used */
 #ifdef USE_BASE
@@ -296,6 +318,17 @@ void setup() {
    interval and check for auto-stop conditions.
 */
 void loop() {
+  get_imu_data(accel, gyro);
+  // Serial.print("Accel: ");
+  // Serial.print(accel[0]);
+  // Serial.print(" ");
+  // Serial.print(accel[1]);
+  // Serial.print(" ");
+  // Serial.print(accel[2]);
+
+
+  // Serial.println("");
+  // delay(100);
   while (Serial.available() > 0) {
     
     // Read the next character
