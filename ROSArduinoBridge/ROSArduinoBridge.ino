@@ -210,22 +210,22 @@ int runCommand() {
     Serial.println("OK");
     break;
   case READ_IMU:
-    get_imu_data(accel, gyro);
-    Serial.print(accel[0]);
-    Serial.print(" ");
-    Serial.print(accel[1]);
-    Serial.print(" ");
-    Serial.print(accel[2]);
-    Serial.print(" ");
-    Serial.print(gyro[0]);
-    Serial.print(" ");
-    Serial.print(gyro[1]);
-    Serial.print(" ");
-    Serial.println(gyro[2]);
+    // get_imu_data(accel, gyro);
+    // Serial.print(accel[0]);
+    // Serial.print(" ");
+    // Serial.print(accel[1]);
+    // Serial.print(" ");
+    // Serial.print(accel[2]);
+    // Serial.print(" ");
+    // Serial.print(gyro[0]);
+    // Serial.print(" ");
+    // Serial.print(gyro[1]);
+    // Serial.print(" ");
+    // Serial.println(gyro[2]);
     
     break;
   case CALIBRATE_IMU:
-    calibrate_imu();
+    // calibrate_imu();
     Serial.println("OK");
     break;
   case MOTOR_SPEEDS:
@@ -273,7 +273,7 @@ void setup() {
 
   pinMode(13, OUTPUT);
   digitalWrite(13, HIGH);
-  setup_imu();
+  // setup_imu();
 
 
 // Initialize the motor controller if used */

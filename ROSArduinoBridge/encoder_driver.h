@@ -10,8 +10,10 @@
   #define LEFT_ENC_PIN_B PD3  //pin 3
   
   //below can be changed, but should be PORTC pins
-  #define RIGHT_ENC_PIN_A PC2  //pin A2
-  #define RIGHT_ENC_PIN_B PC3   //pin A3
+  // #define RIGHT_ENC_PIN_A PC2  //pin A2
+  // #define RIGHT_ENC_PIN_B PC3   //pin A3
+  #define RIGHT_ENC_PIN_A PC4 //pin 4
+  #define RIGHT_ENC_PIN_B PC5  //pin 7
 #endif
    
 long readEncoder(int i);
