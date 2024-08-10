@@ -29,7 +29,7 @@ void calibrate_imu(){
 
 
 
-    delay(500); // Allow time for the sensor to stabilize
+    delay(1000); // Allow time for the sensor to stabilize
     // Serial.println("Calibrating...");
 
     // Collect data for calibration
@@ -44,7 +44,7 @@ void calibrate_imu(){
         gy_offset += gyro[1];
         gz_offset += gyro[2];
 
-        delay(1); // Small delay to give the sensor time to reset
+        delay(3); // Small delay to give the sensor time to reset
     }
 
     // Calculate the average offsets
@@ -56,12 +56,12 @@ void calibrate_imu(){
     gz_offset /= 1000;
 
     // Set the calculated offsets
-    accel_offset[0] = ax_offset;   
-    accel_offset[1] = ay_offset;
-    accel_offset[2] = az_offset;
-    gyro_offset[0] = gx_offset;
-    gyro_offset[1] = gy_offset;
-    gyro_offset[2] = gz_offset;
+    accel_offset[0] += ax_offset;   
+    accel_offset[1] += ay_offset;
+    accel_offset[2] += az_offset;
+    gyro_offset[0] += gx_offset;
+    gyro_offset[1] += gy_offset;
+    gyro_offset[2] += gz_offset;
 
     // // Print the calibration results
     // Serial.println("Calibration Complete!");
